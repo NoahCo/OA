@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <!--<link rel="stylesheet" href="/client/css/style.css" />-->
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+<style>
+    .classtd{
+        border-style:solid;
+        border-size:1px;
+    }
+</style>   
+<script>
+  // Add your javascript here
+   
+
+$( document ).ready(function() {
+    
+    var data = (
+    {"name":"bob", "age":35, 
+    "address":{"street":"6565 sunset blvd",
+    "zip":"90028", "city":"Los Angeles"}
+    },
+    {"name":"angela", "age":25, 
+    "address":{"street":"1234 Tropicana blvd",
+    "zip":"89100", "city":"Las Vegas"}
+    },
+    {"name":"carol", "age":52, 
+    "address":{"street":"4232 melrose ave",
+    "zip":"90029", "city":"Los Angeles"}
+    },
+    {"name":"jack", "age":63, 
+    "address":{"street":"1344 first street",
+    "zip":"90105", "city":"Las Vegas"}
+    },
+    {"name":"celine", "age":21, 
+    "address":{"street":"1344 first street",
+    "zip":"10003", "city":"New York"}
+    },
+    {"name":"Luke", "age":74, 
+    "address":{"street":"1344 first street",
+    "zip":"10105", "city":"Bronx"}
+    },
+    {"name":"martin", "age":55, 
+    "address":{"street":"1344 first street",
+    "zip":"10108", "city":"Bronx"}
+	});
+
+    $(document).ready(function(){
+   
+    function yeah(){
+        return $.getJSON("data");
+    }
+    yeah().then(function (words){
+        console.log(words)
+    })
+    }
+
+)});
+</script>
+  </head>
+
+  <body>
+    <div id="loader" style="display:none;">
+      <img class="ajax-loader" src="https://core.trac.wordpress.org/raw-attachment/ticket/21456/wpspin_light.gif" />
+    </div>
+    <div id="ajaxresults"></div>
+<div id="msg">Please select a filter</div>
+    <select id="filter">
+        <option value="">Choose a filter</option>
+            <option value="name">Name</option>
+            <option value="age">age</option>
+            <option value="address">Address</option>
+    </select>
+
+        <select id="filtercss">
+        <option value="">Choose a style</option>
+            <option value="wb">with cell border</option>
+            <option value="nb">no cell border</option>
+    </select>
+
+   <table id="tbl" style="border-style:solid;border-size:1px;">
+
+    </table>
+
+  </body>
+
+</html>

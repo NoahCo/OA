@@ -1,0 +1,32 @@
+body{
+    width: 550px;
+    border: 25px solid #bfbfbf;
+    padding: 25px;
+    margin: 25px;
+    background-color: white;
+    
+}
+date{
+    color: #8080ff;
+}
+.quote{
+    
+    border-style: solid;
+    border-top-style: none;
+    border-bottom-style: none;
+    border-right-style: none;
+    border-left-color: #bfbfbf;
+    border-left-width: thick;
+}
+.bottom{
+    border-style: solid;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;
+    border-bottom-color: #bfbfbf;
+    border-bottom-width: thin;
+    padding-bottom: 15px;
+}
+h1{
+    color: #000066;
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Understanding JavaScript's Capture</title>
+  <style>
+    html {
+      box-sizing: border-box;
+    }
+    *, *:before, *:after { box-sizing: inherit; }
+
+    div {
+      width:100%;
+      padding:100px;
+    }
+
+    .one {
+      background: #79BD8F;
+    }
+
+    .two {
+      background: #BEEB9F;
+    }
+
+    .three {
+      background: #FFFF9D;
+    }
+  </style> 
+</head>
+<body class="bod">
+
+  <div class="one">
+    <div class="two">
+      <div class="three">
+      </div>
+    </div>
+  </div>
+
+<button>button</button>
+
+<script>
+ var divs = document.getElementsByTagName("div") ;
+ for(var i=0; i<divs.length; i++) {
+
+  divs[i].addEventListener("click",logText,false)
+  function logText(e) {
+    e = e || event
+    var target = e.target || e.srcElement
+    this.style.backgroundColor='yellow'
+    alert("target = "+target.className+", this="+this.className)
+    console.log(this.classList.value);
+    this.style.backgroundColor = ''
+    e.stopPropagation();
+  }
+ var  click = document.getElementsByTagName("button");
+    this.addEventListener("click",clicked);
+    
+}
+
+
+function clicked(click){
+  console.log("clicked");
+ this.removeEventListener("click",clicked,false);
+}
+
+
+</script>
+</body>
+</html>
