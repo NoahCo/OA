@@ -1,0 +1,11 @@
+<h2 class="date">{{account.startingBalance}}  </h2>
+
+
+
+
+<div class="event" ng-repeat="transaction in account.transaction">
+  <a href="#/{{$index}}">
+    <h3 class="name"> {{transactions.type}} </h3>
+    <p><span class="from"> {{transaction.date}} </span> - <span class="to"> {{ transaction.amount}}  </span><p>{{transaction.balance}}</p></p>
+  </a>
+</div>

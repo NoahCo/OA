@@ -1,0 +1,1 @@
+var SuggestApp = angular.module('SuggestApp',[]);

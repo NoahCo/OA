@@ -1,0 +1,6 @@
+
+<textarea ng-model="rply" placeholder="Reply..." style='width:510px'></textarea>
+                    <button ng-click='btn_rply();' id="replyBtn" style='margin-top:5px;'>Reply</button>
+                    <ul>
+                        <textarea ng-repeat="comnt in comment" style='width:510px'> Reply: {{ comnt }} </textarea>
+                    </ul>
