@@ -1,6 +1,6 @@
 AtmApp.controller('AccController', ['$scope','transactions',function($scope, transactions) {
  $scope.newBal= 0;
- $scope.date = new Date();
+ 
         transactions.success(function(data){
             $scope.account = data[0].startingBalance ;
             $scope.transactions = data[0].transactions; 
@@ -15,6 +15,7 @@ AtmApp.controller('AccController', ['$scope','transactions',function($scope, tra
                    
                 }
                else if($scope.newBal>0){
+                   $scope.date = new Date();
                     $scope.newBal-=$scope.userAmount;
                     transactions = {"type":'Withdrawal',
                                 "amount": $scope.userAmount,
@@ -39,6 +40,7 @@ AtmApp.controller('AccController', ['$scope','transactions',function($scope, tra
              if ($scope.userAmount != '') {
                 if($scope.newBal>0){
                 $scope.newBal = parseFloat($scope.newBal) + parseFloat($scope.userAmount);
+                $scope.date = new Date();
                 transactions = {"type":'Deposit',
                                 "amount": $scope.userAmount,
                                 "date": $scope.date,
@@ -57,6 +59,6 @@ AtmApp.controller('AccController', ['$scope','transactions',function($scope, tra
         $scope.hi=function(){
            
             console.log($scope.newBal);
-             console.log($scope.account);
+             console.log($scope.date);
         }
 }]);
