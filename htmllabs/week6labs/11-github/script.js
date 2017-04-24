@@ -16,6 +16,64 @@ the button's event is fired.
 /* global $ */
 
 $(document).ready(function(){
-    var APIUrl = "https://api.github.com/users/"+ username + "/repos";
-	
-});
+   
+    $(function(){
+  $('#search').on('click', function(e){
+    e.preventDefault();
+    $('#results').html('<div id="loader"><img src="https://core.trac.wordpress.org/raw-attachment/ticket/21456/wpspin_light.gif" alt="loading..."></div>');
+    
+    var username = $('#username').val();
+	 var APIUrl = "https://api.github.com/users/"+ username + "/repos";
+	var requri = "https://api.github.com/users/"+ username ;
+	 function requestJSON(url, callback) {
+    $.ajax({
+      url: url,
+      complete: function(xhr) {
+        callback.call(null, xhr.responseJSON);
+      }
+    });
+  }
+  requestJSON(requri, function(json){
+  if(json.message == "Not Found" || username == '') {
+        $('#results').html("<h2>No User Info Found</h2>");
+      }
+      
+      else {
+        // else we have a user and we display their info
+        var fullname   = json.name;
+        var username   = json.login;
+       
+        
+         if(fullname == undefined) { fullname = username; }
+       var outhtml = '<h2>'+fullname+' <span class="smallname">';
+        
+        outhtml = outhtml + '<div class="repolist clearfix">';
+        
+         var repositories;
+        $.getJSON(APIUrl, function(json){
+          repositories = json;   
+          outputPageContent();                
+        });          
+        
+        function outputPageContent() {
+          if(repositories.length == 0) { outhtml = outhtml + '<p>No repos!</p></div>'; }
+          else {
+            outhtml = outhtml + '<p><strong>Repos List:</strong></p> <ul>';
+            $.each(repositories, function(index) {
+              outhtml = outhtml + '<li><a href="'+repositories[index].html_url+'" target="_blank">'+repositories[index].name + '</a></li>';
+              console.log(repositories[index].name);
+            });
+            outhtml = outhtml + '</ul></div>'; 
+            
+          }
+          $('#results').html(outhtml);
+          console.log(json);
+          
+          
+        } // end outputPageContent()
+      } // end else statement
+   } ); // end requestJSON Ajax call
+  }); // end click event handler
+    })});
+    
+    

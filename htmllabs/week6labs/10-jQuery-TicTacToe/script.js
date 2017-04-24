@@ -34,14 +34,14 @@ $(function () {
      *
      */
 
-    // var wins = 
+    //var wins = 
 
     /*
      * Clears the score and move count, erases the board, and makes it
      * X's turn.
      */
     var startNewGame = function () {
-
+            
     };
 
     /*

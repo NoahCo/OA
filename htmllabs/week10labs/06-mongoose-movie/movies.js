@@ -25,10 +25,10 @@ Movie.find({ year: {$gte: 2011}}, function(err, persons) {
   if (err) return console.error(err);
   console.dir(persons);
 });
-/*Movie.findOneAndUpdate({title: "Home Alone"}, {$push: {"actors": "Michael Jackson"}}, {upsert:true, new: true}, function(err, movies){
+Movie.findOneAndUpdate({title: "Home Alone"}, {$push: {"actors": "Michael Jackson"}}, {upsert:true, new: true}, function(err, movies){
     if (err) return console.error(err);
     console.dir(movies.actors); 
-});*/
+});
 Movie.findOneAndUpdate({title:"Home Alone"}, {$set:{ plot : "A kid is left home ALONE" }},{upsert:true,new:true},function (err, movies) {
  if (err) return console.error(err);
   movies.plot = "A Kid is left home ALONE";
